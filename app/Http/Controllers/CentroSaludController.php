@@ -8,6 +8,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Session;
+use App\User;
 use Auth;
 
 class CentroSaludController extends Controller
@@ -30,10 +31,12 @@ class CentroSaludController extends Controller
 
     public function index()
     {
+        $medico = User::where('idroles', 2)->get();
         $centro_salud = CentroSalud::all();
 
         return view('centros-salud.index', [
             'centro_salud' => $centro_salud,
+            'medico' => $medico,
         ]);
     }
 

@@ -1,116 +1,161 @@
-<!DOCTYPE html>
-<html class="loading" data-textdirection="ltr">
+<!doctype html>
+<html lang="en">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <meta name="description" content="ASADA-SOP, un sistema de administración y agilización de procesos para las ASADAS">
-    <meta name="keywords" content="asada, administracion, agilizacion procesos, asada-sop">
-    <meta name="author" content="PIXINVENT">
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    
-    <title>@yield('title') - MedCare</title>
-    <link rel="apple-touch-icon" href="{{ asset('assets/app-assets/images/ico/apple-touch-icon.png') }}">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/app-assets/images/ico/asada.ico') }}">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
 
-    <!-- BEGIN: Vendor CSS-->
-    <link rel="stylesheet" type="text/css" href="../app-assets/vendors/css/vendors.min.css">
-    <link rel="stylesheet" type="text/css" href="../app-assets/vendors/css/pickers/pickadate/pickadate.css">
-    <link rel="stylesheet" type="text/css" href="../app-assets/vendors/css/tables/datatable/datatables.min.css">
-    <link rel="stylesheet" type="text/css" href="../app-assets/css/pages/users.css">
-    <!-- END: Vendor CSS-->
+    <meta charset="utf-8">
+    <title>MedCare - @yield('title')</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description">
+    <meta content="Themesbrand" name="author">
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="/assets/images/favicon.ico">
 
-    <!-- BEGIN: Theme CSS-->
-    <link rel="stylesheet" type="text/css" href="../app-assets/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="../app-assets/css/bootstrap-extended.css">
-    <link rel="stylesheet" type="text/css" href="../app-assets/css/colors.css">
-    <link rel="stylesheet" type="text/css" href="../app-assets/css/components.css">
-    <link rel="stylesheet" type="text/css" href="../app-assets/css/themes/dark-layout.css">
-    <link rel="stylesheet" type="text/css" href="../app-assets/css/themes/semi-dark-layout.css">
+    <!-- Responsive Table css -->
+    <link href="/assets/libs/admin-resources/rwd-table/rwd-table.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+    <!-- Bootstr/ap Css -->
+    <link href="/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css">
+    <!-- Icons C/ss -->
+    <link href="/assets/css/icons.min.css" rel="stylesheet" type="text/css">
+    <!-- App Css/-->
+    <link href="/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css">
 
-    <!-- BEGIN: Page CSS-->
-    <link rel="stylesheet" type="text/css" href="../app-assets/css/core/menu/menu-types/vertical-menu.css">
-    <link rel="stylesheet" type="text/css" href="../app-assets/css/core/colors/palette-gradient.css">
-    <link rel="stylesheet" type="text/css" href="../app-assets/css/pages/dashboard-ecommerce.css">
-    
-    <link rel="stylesheet" type="text/css" href="../app-assets/css/plugins/forms/validation/form-validation.css">
-    <link rel="stylesheet" type="text/css" href="../app-assets/vendors/css/forms/select/select2.min.css">
-    <!-- END: Page CSS-->
+    <link href="/assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
+    <link href="/assets/libs/spectrum-colorpicker2/spectrum.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css" rel="stylesheet">
 
-    <!-- BEGIN: Custom CSS-->
-    <link rel="stylesheet" type="text/css" href="../../../assets/css/style.css">
-    <!-- END: Custom CSS-->
+    <style>
+        .prueba {/* 
+            color: white;
+            font-size: 40px;
+            text-shadow: 1px 1px 2px black, 0 0 25px rgb(32, 115, 121), 0 0 5px rgb(9, 76, 97); */
+            color: rgb(42, 54, 61);
+            font-size: 40px;
+        }
 
-    <!-- Scrips -->
-    @yield('imports')
+        div.card-b {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            text-align: center;
+        }
+        div.card-c {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            text-align: center;
+            font-size: 20px;
+        }
+
+    </style>
 </head>
 
-<body class="vertical-layout vertical-menu-modern light-layout 2-columns  navbar-floating footer-static" data-open="click" data-menu="vertical-menu-modern" data-col="2-columns" data-layout="semi-dark-layout">
+<body data-sidebar="dark">
+
+    <!-- Begin page -->
+    <div id="layout-wrapper">
 
         @include('includes.header')
 
-            @include('includes.sidebar')
+        <!-- ========== Left Sidebar Start ========== -->
 
-            <!-- BEGIN: Content-->
-            <div class="app-content content">
-                    <div class="content-overlay"></div>
-                    <div class="header-navbar-shadow"></div>
+        @include('includes.sidebar')
 
-                <div class="content-wrapper">
+        <!-- Left Sidebar End -->
+
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+        <div class="main-content">
+
+            <div class="page-content">
+                <div class="container-fluid">
+
                     @yield('content')
-                </div>
+
+                    <!-- end row -->
+
+                </div> <!-- container-fluid -->
             </div>
-
-            <!-- END: Content-->
-
-                <div class="sidenav-overlay"></div>
-                <div class="drag-target"></div>
+            <!-- End Page-content -->
 
 
-                @include('includes.footer')
+            @include('includes.footer')
 
-            
+
+        </div>
+        <!-- end main content-->
+
     </div>
+    <!-- END layout-wrapper -->
 
-   <!-- BEGIN: Vendor JS-->
-    <script src="../app-assets/vendors/js/vendors.min.js"></script>
-    <!-- BEGIN Vendor JS-->
+    <!-- Right Sidebar -->
 
-    <!-- BEGIN: Page Vendor JS-->
-    <script src="../app-assets/vendors/js/tables/datatable/pdfmake.min.js"></script>
-    <script src="../app-assets/vendors/js/tables/datatable/vfs_fonts.js"></script>
-    <script src="../app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
-    <script src="../app-assets/vendors/js/tables/datatable/datatables.buttons.min.js"></script>
-    <script src="../app-assets/vendors/js/tables/datatable/buttons.html5.min.js"></script>
-    <script src="../app-assets/vendors/js/tables/datatable/buttons.print.min.js"></script>
-    <script src="../app-assets/vendors/js/tables/datatable/buttons.bootstrap.min.js"></script>
-    <script src="../app-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js"></script>
+    @include('includes.theme')
 
-    <script src="../app-assets/vendors/js/forms/select/select2.full.min.js"></script>
-    <script src="../app-assets/js/scripts/forms/select/form-select2.js"></script>
+    <!-- /Right-bar -->
 
-    <script src="../app-assets/vendors/js/pickers/pickadate/picker.js"></script>
-    <script src="../app-assets/vendors/js/pickers/pickadate/picker.date.js"></script>
-    <script src="../app-assets/vendors/js/pickers/pickadate/picker.time.js"></script>
-    <script src="../app-assets/vendors/js/pickers/pickadate/legacy.js"></script>
-    <script src="../app-assets/js/scripts/pickers/dateTime/pick-a-datetime.js"></script>
-    <!-- END: Page Vendor JS-->
+    <!-- Right bar overlay-->
+    <div class="rightbar-overlay"></div>
 
-    <!-- BEGIN: Theme JS-->
-    <script src="../app-assets/js/core/app-menu.js"></script>
-    <script src="../app-assets/js/core/app.js"></script>
-    <script src="../app-assets/js/scripts/components.js"></script>
-    <!-- END: Theme JS-->
+    <!-- JAVASCRIPT -->
+    <script src="/assets/libs/jquery/jquery.min.js"></script>
+    <script src="/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/libs/metismenu/metisMenu.min.js"></script>
+    <script src="/assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="/assets/libs/node-waves/waves.min.js"></script>
 
-    <!-- BEGIN: Page JS-->
-    <script src="../app-assets/js/scripts/datatables/datatable.js"></script>
-    <!-- END: Page JS-->
-    <!-- END: Page JS-->
-    @yield('scripts')
+    <!-- Responsive Table js -->
+    <script src="/assets/libs/admin-resources/rwd-table/rwd-table.min.js"></script>
+    <!-- Init js /-->
+    <script src="assets/js/pages/table-responsive.init.js"></script>
+    <!-- fontawesome icons init -->
+    <script src="assets/js/pages/fontawesome.init.js"></script>
+    <!-- Sweet Alerts js -->
+    <script src="assets/libs/sweetalert2/sweetalert2.min.js"></script>
+    <!-- Sweet alert init js-->
+    <script src="assets/js/pages/sweet-alerts.init.js"></script>
+
+    <script src="assets/js/app.js"></script>
+    <script src="/assets/libs/select2/js/select2.min.js"></script>
+    <script src="/assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script src="/assets/libs/spectrum-colorpicker2/spectrum.min.js"></script>
+    <script src="/assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js"></script>
+    <script src="/assets/libs/admin-resources/bootstrap-filestyle/bootstrap-filestyle.min.js"></script>
+    <script src="/assets/libs/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
+    @if (Session::has('message'))
+    <script>
+        swal.fire(/* "Excelente",  */"{!!  Session::get('message') !!}", "success", {
+            botton: "OK"
+        , });
+
+    </script>
+    @endif
+    @if (Session::has('messageError'))
+    <script>
+        swal.fire("Error...", "{!!  Session::get('messageError') !!}", "error", {
+            botton: "OK"
+        })
+
+    </script>
+    @endif
+    @if (Session::has('bienvenida'))
+    <script>
+        Swal.fire(
+            "{!!  Session::get('bienvenida') !!}"
+            , "{{ Auth::user()->name }}"
+            , "success"
+        )
+
+    </script>
+    @endif
+    @if (Session::has('eliminar') == 'ok')
+    <script>
+        Swal.fire(
+            'Eliminado!'
+            , 'Registro Eliminado.'
+            , 'success'
+        )
+
+    </script>
+    @endif
 </body>
-
-
 </html>

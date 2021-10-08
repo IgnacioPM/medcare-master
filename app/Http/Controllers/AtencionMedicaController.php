@@ -28,7 +28,6 @@ class AtencionMedicaController extends Controller
             if (Auth::user()->idroles == 3) {
                 $atencion_medica = AtencionMedica::all();
             }
-
             return view('atencion-medica.index', [
                 'atencion_medica' => $atencion_medica,
             ]);
@@ -59,10 +58,21 @@ class AtencionMedicaController extends Controller
             'confirmado' => 0,
             'precio' => null,
         ]);
+        Mail::send(
+            'emails.contact-message',
+            [
+                'msg' =>$request->mensaje, 
+                'correo' => Auth::user()->email,
+            ],
+            function ($mail) use ($request) {
+                $mail->from(Auth::user()->email, Auth::user()->email);
+                $mail
+                    ->to('plantonk1@gmail.com')
+                    ->subject('Cita medico');
+            }
+        );
 
-        Session::flash('message', 'Se ha enviado tu solicitud de atención médica con éxito');
-
-        return redirect()->route('atencion.medico', ['id' => $request->idmedico]);
+        return redirect()->route('atencion.index')->with('message', 'Se ha enviado tu solicitud de atención médica con éxito!');
     }
 
     public function atencionCentroSalud($id)
@@ -101,10 +111,8 @@ class AtencionMedicaController extends Controller
                     ->subject('Cita centro de salud');
             }
         );
-
-        Session::flash('message', 'Se ha enviado tu solicitud de atención médica con éxito');
-
-        return redirect()->route('atencion.centro-salud', ['id' => $request->idcentro_salud]);
+       
+        return redirect()->route('atencion.index')->with('message', 'Se ha enviado tu solicitud de atención médica con éxito!');
     }
 
     public function edit($id)
@@ -129,8 +137,6 @@ class AtencionMedicaController extends Controller
             ->update(['confirmado' => 1]);
         }
         
-        Session::flash('message', 'Se ha actualizado la atención médica con éxito');
-
-        return redirect()->route('atencion.edit', ['id' => $request->id]);
+        return redirect()->route('atencion.edit', ['id' => $request->id])->with('message', 'Se ha actualizado la atención médica con éxito!');
     }
 }

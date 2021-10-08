@@ -20,7 +20,7 @@
                                 <div class="card text-white bg-gradient-default text-center">
                                     <div class="card-content d-flex">
                                         <div class="card-body">
-                                            <img style="border-radius: 10px;" src="../assets/images/hospital.png" alt="Centro de Salud" width="150" class="float-left mr-2">
+                                            <img style="border-radius: 10px;" src="{{ route('centro-salud.imagen', ['filename'=>$centro_salud->imagen]) }}" alt="Centro de Salud" width="150" class="float-left mr-2">
                                             <h4 style="margin-top: 60px;" class="card-title text-left text-primary font-weight-bold">{{$centro_salud->nombre}}</h4>
                                         </div>
                                     </div>
