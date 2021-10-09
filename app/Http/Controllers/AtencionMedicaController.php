@@ -49,7 +49,7 @@ class AtencionMedicaController extends Controller
 
     public function saveMedico(Request $request)
     {
-        AtencionMedica::create([
+       AtencionMedica::create([
             'idusuario' => $request->id,
             'idmedico' => $request->idmedico,
             'fecha_atencion' => null,
@@ -59,8 +59,11 @@ class AtencionMedicaController extends Controller
             'precio' => null,
         ]);
         Mail::send(
-            'emails.contact-message',
+            'emails.nueva-cita',
             [
+                'USUARIO' => Auth::user()->name,
+                'DOCTOR' =>$request->nameMedico, 
+                'CLINICA' =>$request->clinicaNombre, 
                 'msg' =>$request->mensaje, 
                 'correo' => Auth::user()->email,
             ],
@@ -68,12 +71,12 @@ class AtencionMedicaController extends Controller
                 $mail->from(Auth::user()->email, Auth::user()->email);
                 $mail
                     ->to('plantonk1@gmail.com')
-                    ->subject('Cita medico');
+                    ->subject('Cita medica');
             }
         );
 
         return redirect()->route('atencion.index')->with('message', 'Se ha enviado tu solicitud de atención médica con éxito!');
-    }
+     } 
 
     public function atencionCentroSalud($id)
     {
@@ -99,8 +102,11 @@ class AtencionMedicaController extends Controller
         ]);
 
         Mail::send(
-            'emails.contact-message',
+            'emails.nueva-cita',
             [
+                'USUARIO' => Auth::user()->name,
+                'DOCTOR' =>$request->nameMedico, 
+                'CLINICA' =>$request->clinicaNombre, 
                 'msg' =>$request->mensaje, 
                 'correo' => Auth::user()->email,
             ],

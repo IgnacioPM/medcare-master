@@ -21,10 +21,10 @@
                         <div class="card-body mx-auto ">
                             <h4 class="card-title flex justify-content-center">{{$usuario->name}}</h4>
                         </div>
-                        <img class="img-fluid  justify-content-center mx-auto " src="/images/logo.png" width="150" height="22" alt="Card image cap">
+                        {{-- <img class="img-fluid  justify-content-center mx-auto " src="/images/logo.png" width="150" height="22" alt="Card image cap">
+ --}}
+                        <img class="img-fluid  justify-content-center mx-auto " src="{{ route('user.avatar', ['filename'=>$usuario->imagen]) }}" width="150" height="22" alt="Card image cap">
 
-                        {{-- <img class="img-fluid  justify-content-center mx-auto " src="{{ route('user.avatar', ['filename'=>$usuario->imagen]) }}" width="150" height="22" alt="Card image cap">
-                        --}} 
                         <div class="card-body mx-auto">
                             <p>
                                 @foreach (App\UsuarioProfesion::where('idusuario', $usuario->id)->get() as $usuario_profesiones)
@@ -41,6 +41,9 @@
                     @auth
                     <form class="form form-vertical" action=" {{ action('AtencionMedicaController@saveMedico') }}" novalidate method="POST">
                         @csrf
+                        @foreach (App\UsuarioProfesion::where('idusuario', $usuario->id)->get() as $usuario_profesiones)
+                        <input type="hidden" value="{{$usuario->name}}" name="nameMedico">
+                        @endforeach
                         <input type="hidden" value="{{$usuario->id}}" name="idmedico">
                         <input type="hidden" value="{{Auth::user()->id}}" name="id">
                         <div class="form-body">
@@ -51,6 +54,7 @@
                                         <select name="idcentro_salud" class="select2 form-control">
                                             @foreach($centro_salud as $centros_salud)
                                             <option value={{$centros_salud->idcentros_salud}}>{{$centros_salud->centro_salud->nombre}}</option>
+                                            <input type="hidden" value="{{$centros_salud->centro_salud->nombre}}" name="clinicaNombre">
                                             @endforeach
                                         </select>
                                     </div>

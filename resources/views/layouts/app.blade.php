@@ -123,7 +123,7 @@
     <script src="/assets/libs/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
     @if (Session::has('message'))
     <script>
-        swal.fire(/* "Excelente",  */"{!!  Session::get('message') !!}", "success", {
+        swal.fire(/* "Excelente",  */"{!!  Session::get('message') !!}", /* "success" */, {
             botton: "OK"
         , });
 

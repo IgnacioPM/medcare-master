@@ -35,6 +35,7 @@
                                     @csrf
                                     <input type="hidden" value="{{$centro_salud->idcentros_salud}}" name="idcentro_salud">
                                     <input type="hidden" value="{{Auth::user()->id}}" name="id">
+                                    <input type="hidden" value="{{$centro_salud->nombre}}" name="clinicaNombre">
                                     <div class="form-body">
                                         <div class="row">
                                             <div class="col-6">
@@ -43,6 +44,7 @@
                                                     <select name="idmedico" class="select2 form-control">
                                                         @foreach($medico as $medicos)
                                                         <option value={{$medicos->user->id}}>{{$medicos->user->name}}</option>
+                                                        <input type="hidden" value="{{$medicos->user->name}}" name="nameMedico">
                                                         @endforeach
                                                     </select>
                                                 </div>
