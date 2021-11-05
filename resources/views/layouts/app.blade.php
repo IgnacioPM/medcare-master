@@ -123,7 +123,7 @@
     <script src="/assets/libs/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
     @if (Session::has('message'))
     <script>
-        swal.fire(/* "Excelente",  */"{!!  Session::get('message') !!}", /* "success" */, {
+        swal.fire("Excelente", "{!!  Session::get('message') !!}", "success", {
             botton: "OK"
         , });
 
@@ -157,5 +157,26 @@
 
     </script>
     @endif
+    <script>
+        $('.formulario-eliminar').submit(function(e) {
+            e.preventDefault();
+
+            Swal.fire({
+                title: '¿Está seguro?'
+                , text: "No podrá revertir estos cambios!"
+                , icon: 'warning'
+                , showCancelButton: true
+                , confirmButtonColor: '#3085d6'
+                , cancelButtonColor: '#d33'
+                , confirmButtonText: 'Si, eliminar!'
+                , cancelButtonText: 'Cancelar!'
+            }).then((result) => {
+                if (result.value) {
+                    this.submit();
+                }
+            })
+        })
+
+    </script>
 </body>
 </html>

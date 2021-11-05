@@ -62,7 +62,12 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label for="email-id-vertical">Motivo de la atención médica</label>
-                                        <textarea name="mensaje" class="form-control" id="basicTextarea" rows="3" placeholder="Escriba el motivo aquí..." required></textarea>
+                                        <textarea name="mensaje" class="form-control" id="mensaje" rows="3" placeholder="Escriba el motivo aquí..." required></textarea>
+                                        @error('mensaje')
+                                        <br>
+                                        <small>{{ $message }} </small>
+                                        <br>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-12 mt-2">

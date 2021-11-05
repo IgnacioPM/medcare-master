@@ -44,7 +44,7 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="col-6">
+                                            <div class="col-6 mt-2">
                                                 <div class="form-group">
                                                     <label for="password-vertical">Profesión</label>
                                                     <select name="idprofesiones" class="select2 form-control">
@@ -54,7 +54,7 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="col-12">
+                                            <div class="col-12 mt-2">
                                                 <button type="submit" class="btn btn-primary mr-1 mb-1">Crear</button>
                                             </div>
                                         </div>

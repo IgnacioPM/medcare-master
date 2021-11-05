@@ -49,6 +49,9 @@ class AtencionMedicaController extends Controller
 
     public function saveMedico(Request $request)
     {
+        $request->validate([
+            'mensaje' => 'required|min:10', 
+       ]);
        AtencionMedica::create([
             'idusuario' => $request->id,
             'idmedico' => $request->idmedico,
@@ -91,6 +94,9 @@ class AtencionMedicaController extends Controller
 
     public function saveCentroSalud(Request $request)
     {
+        $request->validate([
+            'mensaje' => 'required|min:10', 
+       ]);
         AtencionMedica::create([
             'idusuario' => $request->id,
             'idmedico' => $request->idmedico,
@@ -144,5 +150,20 @@ class AtencionMedicaController extends Controller
         }
         
         return redirect()->route('atencion.edit', ['id' => $request->id])->with('message', 'Se ha actualizado la atención médica con éxito!');
+    }
+    public function delete($id)
+    {
+        $eventoEliminar = AtencionMedica::find($id);
+        try {
+            $eventoEliminar->delete();
+            $status=1;
+        } catch (\Illuminate\Database\QueryException $e) {
+            $status=2;
+        }
+        if ($status==1) {
+            return redirect('/atenciones')->with('eliminar', 'ok');
+        }else {
+            return back()->with('messageError', 'No se puede eliminar porque tiene dependencias');
+        }
     }
 }

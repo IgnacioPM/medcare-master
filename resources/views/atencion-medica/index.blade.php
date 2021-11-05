@@ -74,6 +74,12 @@
                                                 @else
                                                 <a href="{{ route('atencion.edit', ['id'=>$atenciones->idatencion_medica]) }}" class="btn btn-icon btn-icon rounded-circle bg-gradient-primary mr-1 mb-1 waves-effect waves-light" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fa fa-edit"> </i></a>
                                                 @endif
+                                                <form action="{{ route('atencion.delete', ['id' => $atenciones->idatencion_medica]) }}" class="formulario-eliminar btn btn-icon btn-icon rounded-circle bg-gradient-warning mr-1 mb-1 waves-effect waves-light" method="POST">
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-icon btn-icon rounded-circle bg-gradient-warning mr-1 mb-1 waves-effect waves-light" data-toggle="tooltip" data-placement="top" title="Eliminar cita">
+                                                        <i class="fa fa-trash"> </i>
+                                                    </button>
+                                                </form>
                                             </td>
                                         </tr>
                                         @endforeach

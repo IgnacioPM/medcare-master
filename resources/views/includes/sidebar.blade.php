@@ -41,7 +41,9 @@
                 @auth
                 <li class="nav-item {{ (request()->is('atenciones')) ? 'active' : '' }}"><a href="{{ route('atencion.index') }}">
                         <a href="{{ route('atencion.index') }}" class="waves-effect">
-                            <i class="fas fa-clipboard-check"></i><span class="badge rounded-pill bg-primary float-end">33</span>
+                            <i class="fas fa-clipboard-check"></i><span class="badge rounded-pill bg-primary float-end">
+                                {{App\AtencionMedica::where(['idusuario' => Auth::user()->id])->count()}}
+                            </span>
                             <span>Atenciones médicas</span>
                         </a>
                 </li>

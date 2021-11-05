@@ -42,3 +42,4 @@ Route::post('atencion-medico/save', 'AtencionMedicaController@saveMedico')->name
 Route::post('atencion-centro-salud/save', 'AtencionMedicaController@saveCentroSalud')->name('atencion.saveCentroSalud');
 Route::get('editar/{id}', 'AtencionMedicaController@edit')->name('atencion.edit');
 Route::post('editar/update', 'AtencionMedicaController@update')->name('atencion.update');
+Route::post('atencion-medica/eliminar/{id}','AtencionMedicaController@delete')->name('atencion.delete');
